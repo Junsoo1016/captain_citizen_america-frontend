@@ -1,0 +1,64 @@
+.signUpBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid #ccc; */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+input {
+    margin-bottom: 20px;
+    height: 30px;
+    font-size: 16px;
+    border-radius: 8px;
+}
+
+.name_age {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 300px;
+}
+
+.nameInput {
+    width: 40%;
+}
+
+.ageInput {
+    width: 10%;
+}
+
+.submitBtn {
+    height: 40px;
+    font-size: 20px;
+    margin-bottom: 20px;
+    width: 300px;
+    border: 0;
+    background: linear-gradient(to right, #f6d365 0%, #fda085 100%);
+    color: white;
+    border-radius: 8px;
+}
+
+.backBtn {
+    color: white;
+    background: none;
+    border: none;
+    height: 20px;
+    margin-bottom: 0;
+}
+
+.backBtn svg {
+    width: 20px;
+    height: 20px;
+    padding-right: 5px;
+}
+
+.backBtn p:hover {
+    text-decoration: underline;
+}

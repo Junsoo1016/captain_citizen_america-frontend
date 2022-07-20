@@ -1,0 +1,88 @@
+.loginBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid #ccc; */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.loginLogo {
+    margin-bottom: 30px;
+}
+
+#login_shield {
+    width: 100px;
+    height: 100px;
+}
+
+#login_gradient-text {
+    background: linear-gradient(to right, #f6d365 0%, #fda085 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 38px;
+    font-weight: bold;
+    color: #fff;
+    font-family: 'American Captain';
+    /* border: 1px solid #fff; */
+    padding-top: 5px;
+    margin: 0;
+}
+
+input {
+    margin-bottom: 20px;
+    height: 40px;
+    font-size: 20px;
+    width: 300px;
+    border-radius: 10px;
+    border: 0.5px solid rgb(188, 188, 188);;
+}
+
+.loginBtn {
+    height: 40px;
+    font-size: 20px;
+    margin-bottom: 20px;
+    width: 300px;
+    border: 0;
+    background: linear-gradient(to right, #f6d365 0%, #fda085 100%);
+    color: white;
+    border-radius: 8px;
+}
+
+.newAccountBtn {
+    height: 40px;
+    color: white;
+    font-size: 20px;
+    width: 300px;
+    border: 0;
+    border-radius: 8px;
+    background: linear-gradient(to right, #f6d365 0%, #fda085 100%);
+    margin-bottom: 20px;
+}
+
+.howToUse {
+    color: white;
+    background: none;
+    border: none;
+    height: 20px;
+    margin-bottom: 0;
+}
+
+.howToUse svg {
+    width: 20px;
+    height: 20px;
+    padding-right: 5px;
+}
+
+.howToUse p:hover {
+    text-decoration: underline;
+}
+
+.linkBtn {
+    color: white;
+    text-decoration: none;  
+}

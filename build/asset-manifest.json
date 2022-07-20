@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/static/css/main.878ecbdf.css",
+    "main.js": "/static/js/main.3d9758ae.js",
+    "static/js/787.25fead02.chunk.js": "/static/js/787.25fead02.chunk.js",
+    "static/media/American Captain.otf": "/static/media/American Captain.3427fec5eb7c8e3a2c93.otf",
+    "index.html": "/index.html",
+    "main.878ecbdf.css.map": "/static/css/main.878ecbdf.css.map",
+    "main.3d9758ae.js.map": "/static/js/main.3d9758ae.js.map",
+    "787.25fead02.chunk.js.map": "/static/js/787.25fead02.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.878ecbdf.css",
+    "static/js/main.3d9758ae.js"
+  ]
+}
