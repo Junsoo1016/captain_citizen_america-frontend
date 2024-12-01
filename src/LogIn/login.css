@@ -3,11 +3,9 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* border: 1px solid #ccc; */
     position: absolute;
     top: 50%;
     left: 50%;
-    top: 50%;
     transform: translate(-50%, -50%);
 }
 
@@ -26,10 +24,7 @@
     -webkit-text-fill-color: transparent;
     font-size: 38px;
     font-weight: bold;
-    color: #fff;
     font-family: 'American Captain';
-    /* border: 1px solid #fff; */
-    padding-top: 5px;
     margin: 0;
 }
 
@@ -37,31 +32,21 @@ input {
     margin-bottom: 20px;
     height: 40px;
     font-size: 20px;
-    width: 300px;
+    width: 300px; /* 모든 버튼과 동일한 너비 */
     border-radius: 10px;
-    border: 0.5px solid rgb(188, 188, 188);;
+    border: 0.5px solid rgb(188, 188, 188);
 }
 
-.loginBtn {
+.loginBtn, .newAccountBtn {
     height: 40px;
     font-size: 20px;
-    margin-bottom: 20px;
-    width: 300px;
-    border: 0;
-    background: linear-gradient(to right, #f6d365 0%, #fda085 100%);
+    width: 300px; /* 입력 필드와 동일한 너비 */
+    border: none;
     color: white;
-    border-radius: 8px;
-}
-
-.newAccountBtn {
-    height: 40px;
-    color: white;
-    font-size: 20px;
-    width: 300px;
-    border: 0;
     border-radius: 8px;
     background: linear-gradient(to right, #f6d365 0%, #fda085 100%);
     margin-bottom: 20px;
+    cursor: pointer;
 }
 
 .howToUse {
@@ -70,19 +55,17 @@ input {
     border: none;
     height: 20px;
     margin-bottom: 0;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
 }
 
-.howToUse svg {
-    width: 20px;
-    height: 20px;
-    padding-right: 5px;
-}
-
-.howToUse p:hover {
+.howToUse:hover {
     text-decoration: underline;
 }
 
 .linkBtn {
     color: white;
-    text-decoration: none;  
+    text-decoration: none;
 }

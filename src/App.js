@@ -7,42 +7,32 @@ import Home from './Home/Home';
 import Login from './LogIn/LogIn';
 import SignUp from './SignUp/SignUp';
 import UserProfile from './UserProfile/UserProfile';
-import { io } from 'socket.io-client';
 
 function App() {
-
   const [userData, setUserData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
-  const [socket, setSocket] = useState(null);
-  const [notifications, setNotifications] = useState([])
+  const [notifications, setNotifications] = useState([]);
+  const [login, setLogin] = useState(false);
 
+  const location = useLocation();
 
   const getUserData = async () => {
     try {
       const response = await axios.get('https://captain-citizen-america.herokuapp.com/users');
       setUserData(response.data);
       setIsLoading(false);
-    }
-    catch (error) {
+    } catch (error) {
       setIsError(true);
+      console.error('Error fetching user data:', error);
     }
-  }
+  };
 
   useEffect(() => {
     getUserData();
-  }
-  , []);
+  }, []);
 
-  const user = userData[4];
-
-
-
-  const navigate = useNavigate()
-  const location = useLocation();
-  
-  // const [user, setUser] = useState(userData[2]);
-
+  const user = userData[4]; // 임시 사용자 선택
 
   const [loginForm, setLoginForm] = useState({
     user_id: '',
@@ -56,30 +46,7 @@ function App() {
     });
   };
 
-  // const validateLogin = () => {
-
-  //   const userSignIn = userData.find(
-  //     (user) => user.user_id === loginForm.user_id
-  //   );
-  //   if (userSignIn.password === loginForm.password) {
-  //     console.log('welcome');
-  //     axios
-  //       .put(
-  //         `https://captain-citizen-america.herokuapp.com/users/${user.id}`,
-  //         {
-  //           login: true,
-  //         }
-  //       )
-  //       .then((res) => {
-  //         console.log(res.data);
-  //         setUser(res.data);
-  //       });
-  //   } else {
-  //     alert('The password you’ve entered is incorrect.');
-  //   }
-  // };
-
-  const [signUpForm, setSignUpForm] = useState(null)
+  const [signUpForm, setSignUpForm] = useState(null);
 
   const handleSignUp = (e) => {
     setSignUpForm({
@@ -88,58 +55,66 @@ function App() {
     });
   };
 
-  const createUser = () => {
-    axios
-      .post(
+  const createUser = async () => {
+    try {
+      const response = await axios.post(
         'https://captain-citizen-america.herokuapp.com/users/',
         signUpForm
-      )
-      .then((res) => {
-        let oldArray = [...userData];
-        oldArray.push(res.data);
-        setUserData(oldArray);
-      });
+      );
+      setUserData((prev) => [...prev, response.data]);
+    } catch (error) {
+      console.error('Error creating user:', error);
+    }
   };
-  
-  const [login, setLogin] = useState(false);
-  // console.log(userData);
+
+  // 숨길 경로 설정
+  const hideHeaderPaths = ['/', '/sign-up'];
 
   return (
     <div className="App">
-      <nav>
-      {login ? 
-       <Nav user={user} setNotifications={setNotifications}/>
-       : null }
-      </nav>
+      {/* 조건부 네비게이션 */}
+      {!hideHeaderPaths.includes(location.pathname) && login && (
+        <Nav user={user} setNotifications={setNotifications} />
+      )}
 
       <main>
         <Routes>
-          <Route 
-            path="/home" 
-            element={
-            <Home className='home' userData={userData} socket={socket} user={user} setNotifications={setNotifications} />
-            } 
-          />
           <Route
-            path='/'
+            path="/home"
             element={
-              <Login className='login' handleLogin={handleLogin} setLogin={setLogin}/>
+              <Home
+                className="home"
+                userData={userData}
+                user={user}
+                setNotifications={setNotifications}
+              />
             }
           />
           <Route
-            path='sign-up'
+            path="/"
             element={
-              <SignUp handleSignUp={handleSignUp} createUser={createUser} />
+              <Login
+                className="login"
+                handleLogin={handleLogin}
+                setLogin={setLogin}
+              />
             }
           />
           <Route
-            path='user-profile'
-            element={<UserProfile user={user}/>
-          }
+            path="/sign-up"
+            element={
+              <SignUp
+                handleSignUp={handleSignUp}
+                createUser={createUser}
+              />
+            }
           />
-          </Routes>
+          <Route
+            path="/user-profile"
+            element={<UserProfile user={user} />}
+          />
+        </Routes>
       </main>
-
     </div>
   );
 }
